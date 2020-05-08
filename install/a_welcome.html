@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>开始安装-安装协议</title>
+    <link rel="stylesheet" href="frame/layui/css/layui.css">
+    <link rel="stylesheet" href="css/install.css">
+</head>
+<body>
+<!-- main -->
+<div class="layui-main">
+    <h1 class="site-h1">开始安装<em class="version">version：<?php echo $config['version']?></em></h1>
+    <!-- text -->
+    <blockquote class="layui-elem-quote">
+        <h1>安装协议</h1>
+        <p>感谢您使用默笙工具箱2.0<em><?php echo $config['version']?></em>，以下简称【安装引导程序】。</p>
+        <p>该【安装引导程序】作用于程序安装前的数据库创建，SQL导入流程。</p>
+        <p>------------------------------其它相关------------------------------</p>
+        <p>默笙工具箱2.0开发完成之初并没有开放"应用商城"的功能。</p>
+        <p>------------------------------2.0特性------------------------------</p>
+        <p>1.优化数据结构</p>
+        <p>2.后台全新UI</p>
+        <p>3.新增验证码功能</p>
+        <p>4.新增防xss功能</p>
+        <p>5.新增在线上传工具功能</p>
+        <p>6.新增编辑首页功能</p>
+        <p>7.新增多模版</p>
+        <p>8.新增应用商店（暂未开放）</p>
+        <p>9.前台优化数据结构</p>
+    </blockquote>
+    <!-- btn -->
+    <div class="btn-box">
+        <a class="layui-btn layui-btn-small" href="./index.php?type=<?php echo $config['checkPage']; ?>">同意</a>
+    </div>
+</div>
+</body>
+</html>
