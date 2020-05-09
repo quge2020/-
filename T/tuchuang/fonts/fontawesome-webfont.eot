@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>404 error page not found</title>
+<link rel="stylesheet" type="text/css" href="../css/404.css">
+</head>
+<body>
+<div id="hallway">
+ <div class="container">
+  <div id="cat1" class="painting"><img src="../images/cat1weyes.png">
+   <div class="eye-container">
+    <div class="eye left">
+     <div class="pupil"></div>
+    </div>
+    <div class="eye right">
+     <div class="pupil"></div>
+    </div>
+   </div>
+  </div>
+  <div id="cat2" class="painting"><img src="../images/cat2weyes.png">
+   <div class="eye-container">
+    <div class="eye">
+     <div class="pupil"></div>
+    </div>
+   </div>
+  </div>
+  <div id="giraffe" class="painting"><img src="../images/giraffeweyes.png">
+   <div class="eye-container">
+    <div class="eye left">
+     <div class="pupil"></div>
+    </div>
+    <div class="eye right">
+     <div class="pupil"></div>
+    </div>
+   </div>
+   <img class="monocle" src="../images/monocle.png"></div>
+  <div id="cat3" class="painting"><img src="../images/cat3weyes.png">
+   <div class="eye-container">
+    <div class="eye left">
+     <div class="pupil"></div>
+    </div>
+    <div class="eye right">
+     <div class="pupil"></div>
+    </div>
+   </div>
+  </div>
+  <div id="cat4" class="painting"><img src="../images/cat4weyes.png">
+   <div class="eye-container">
+    <div class="eye left">
+     <div class="pupil"></div>
+    </div>
+    <div class="eye right">
+     <div class="pupil"></div>
+    </div>
+   </div>
+  </div>
+ </div>
+</div>
+<div class="footer">
+ <h1>404 error page not found</h1>
+ <p>非常抱歉，您所请求的页面不存在！</p>
+ <p>请点击下方链接继续关注本站。</p>
+ <p class="nav"><a href="javascript:history.back(-1);" title="返回上一页">点击返回</a> <a id="link_home" href="http://www.youngxj.cn" title="进入首页">网站首页</a> <a id="link_baidu" href="https://www.baidu.com/baidu?tn=monline_3_dg&ie=utf-8&wd=%E6%9D%A8%E5%B0%8F%E6%9D%B0blog" title="百度搜索本站">百度搜索</a> <a href="javascript:window.opener=null;window.open('','_self');window.close();">关闭页面</a></p>
+</div>
+<script type="text/javascript" src="../js/404.js"></script>
+<div></div>
+</body>
+</html>
