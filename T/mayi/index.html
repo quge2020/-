@@ -1,0 +1,10 @@
+<head>
+
+<link href="homemainstyle_v1.css" rel="stylesheet" type="text/css" />
+<script src="jquery-1.7.1.min.js" type="text/javascript"></script>
+
+</head>
+
+
+<img id="maImg" src="mayi.gif" height="30" style="right: 10px; bottom: 27.981141544703018px; -webkit-transform: rotate(-360deg);">
+<script> move();function move(){$("#maImg").animate({"right":10,"bottom":150},5000,function(){$("#maImg").css({"-webkit-transform":"rotate(-70deg)"});$("#maImg").animate({"right":100,"bottom":240},5000,function(){$("#maImg").css({"-webkit-transform":"rotate(-140deg)"});$("#maImg").animate({"right":200,"bottom":150},5000,function(){$("#maImg").css({"-webkit-transform":"rotate(-210deg)"});$("#maImg").animate({"right":90,"bottom":0},5000,function(){$("#maImg").css({"-webkit-transform":"rotate(-300deg)"});$("#maImg").animate({"right":10,"bottom":20},3000,function(){$("#maImg").css({"-webkit-transform":"rotate(-360deg)"});move();})})})})})}</script>

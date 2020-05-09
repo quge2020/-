@@ -1,0 +1,39 @@
+@charset "utf-8";
+* html body{font-size:12px/0.75em;}
+body {background:#F0F7FC;text-align:left;color:#333;font:13px Verdana,Tahoma, Arial, Helvetica, sans-serif;line-height:16px;margin:0px auto;padding:0;}
+td, input, textarea, select, button {line-height:16px;}
+input, textarea, select, button{vertical-align:middle;}
+ul, ol, li, dl, dd, p, h1, h2, h3, h4, h5, h6, form, fieldset {margin:0;padding:0;}
+ul,ol{list-style:none;}
+img{vertical-align:middle;border:0;}
+a{color:#0D8C21;text-decoration:none;}
+a:hover{color:red;text-decoration:underline;}
+textarea{border:1px solid #C5E2F2;width:90%;height:150px;overflow:visible;resize:none;padding:5px;wrap:off}
+input{margin-top:5px;}
+.input{border:1px solid #94C6E1;background:#FFF;color:#22AC38;font-weight:bold;padding:5px;margin-bottom:5px;}
+.input{font-size:13px;}
+.submit{border:1px solid #C5E2F2; background:#CDE4F2 url('../images/bg_HccToolsSubmit.gif') repeat-x 50% top;height:30px;margin-left:5px;cursor:pointer;margin-bottom:5px;}
+.wrap {margin:auto;width:95%;max-width:900px;_width:900px;clear:both;}
+.HccToolsMenu{margin:auto;background-color:#2B6DD2;text-align:center;height:45px;line-height:45px;margin-bottom:5px;}
+.HccToolsMenu ul{z-index:999;background-color:#2B6DD2;position:absolute;}
+.HccToolsMenu ul li{cursor:pointer;float:left;height:45px;line-height:45px;text-align:center;}
+.HccToolsMenu ul li:hover,.HccToolsMenu ul li.active{background-color:#1D498D;}
+.HccToolsMenu ul li:hover > a,.HccToolsMenu ul li.active > a{color:#FFF;text-decoration:none;}
+/*.HccToolsMenu ul li:first-child{display:none;}*/
+.HccToolsMenu a{color:#FFF;padding:0 10px;display:block;}
+.HccToolsMenu a:hover{text-decoration:none;background:#1D498D;color:#FFF;}
+#HccItemBar{line-height:37px; height:37px; padding-left:5px;background:url('../images/bg_HccItemBar.gif') repeat-x;color:#0066CC;border:1px solid #c5e2f2; border-bottom:0; overflow:hidden;}
+#HccItemBar .HccTitle{float:left; padding-top:0px!important; padding:0px 12px 0 0; overflow:hidden; }
+#HccItemBar .HccSearch{float:right;padding-top:0px!important;padding:5px 2px 0 0;}
+/*#HccItemBar .HCC_search{width:120px;background-position:right center;background-image:url('//hechaocheng.eu.org/HccTools/images/ico_search.png');background-repeat:no-repeat;padding:2px 22px 2px 3px;border:1px solid #cde4f2;color:#888;}*/
+#HccItemBar .HCC_search{width:120px;background-position:right center;background-image:url('../images/bg_HccToolsSerach.png');background-repeat:no-repeat;padding:2px 22px 2px 3px;border:1px solid #cde4f2;color:#888;}
+#HccItemBar .HCC_search:focus{color:#4d90fd}
+.HccTools{clear:both;}
+.HccTools1{background:#FFF url('../images/bg_HccToolsEntrybg.gif') repeat-x left top;border:1px solid #bbd7e6;border-top:0;padding:3px 15px;}
+.HCC_Info{max-width:900px;border-left:#3cc051 5px solid;background-color:#EBFCEE;padding:2px 3px 5px 5px;font-weight:normal;font-size:13px;color:#777;margin:20px auto;text-align:left}
+#gotop {bottom: 120px;cursor: pointer;position: fixed;_position:absolute;display:none;z-index: 100;}
+@media (max-width: 640px){.HccToolsMenu ul li{float:none;display:none;}.HccToolsMenu ul li:first-child{display:list-item;}.HccToolsMenu ul:hover > li,.HccToolsMenu ul:focus > li{display:list-item;display:list-item;}.HccToolsMenu ul li:first-child:hover{background-color:#1D498D;color:#FFF;}.HccToolsMenu #pc{display:none}}
+.HccTools1 td,th{border:0px solid #C0C0C0;border-collapse:collapse;padding:5px;}
+.HccTools1 .t{background-color:#D4E6F7;font-size:13px;text-align:left}
+.HccTools1 .l{background-color:#FFFFFF;font-size:13px;}
+.HccTools1 .desc{text-align:left;padding:3px;}

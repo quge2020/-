@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="utf-8">
+    <title>5G云-键盘网址导航页面</title>
+	<style>
+*{margin: 0;padding: 0;}
+#container {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+}
+#output {
+	width: 100%;
+	height: 100%;
+}
+.color{
+	width: 120px;
+	height: 20px;
+	margin: 0 auto;
+	position: fixed;
+	left: 50%;
+	margin-left: -60px;
+	bottom: 20px;
+}
+.color li{
+	float: left;
+	margin: 0 5px;
+	width: 20px;
+	height: 20px;
+	background: #ccc;
+	box-shadow: 0 0 4px #FFF;
+	list-style: none;
+	cursor: pointer;
+}
+.color li:nth-child(1){
+	background: #002c4a;
+}
+.color li:nth-child(2){
+	background: #35ac03;
+}
+.color li:nth-child(3){
+	background: #ac0908;
+}
+.color li:nth-child(4){
+	background: #18bbff;
+}
+</style>
+<script src="js/jquery_1.js"></script>
+<script src="js/vector_2.js"></script>
+<script>
+$(function(){
+	// 初始化 传入dom id
+	var victor = new Victor("container", "output");
+	var theme = [
+			["#002c4a", "#005584"],
+			["#35ac03", "#3f4303"],
+			["#ac0908", "#cd5726"],
+			["#18bbff", "#00486b"]
+		]
+	$(".color li").each(function(index, val) {
+		var color = theme[index];
+		 $(this).mouseover(function(){
+			victor(color).set();
+		 })
+	});
+});
+</script>
+    <link rel="stylesheet" href="css/css_3.css">
+	<link rel="stylesheet" href="css/demo_3.css" type="text/css"/>
+    <script src="js/jquery.min_1.js"></script>
+</head>
+
+<body>
+	<div id="intro">
+		<h1><p>5G云 - 正能量有思想</p>uixsj.cn
+		</h1>
+		<a href="http://www.zye.cc/">前往5G云的博客</a>
+	</div>
+<div id="container"><div id="output"></div></div>
+	<div id="bubbles"></div>
+
+<DIV>
+<DIV ALIGN="center">
+<CENTER>
+<TABLE STYLE="WIDTH: 280px; HEIGHT: 54px" HEIGHT="124" CELLSPACING="1" WIDTH="280" BACKGROUND="" BORDER="0">
+<TBODY>
+<TR>
+<TD WIDTH="280" HEIGHT="87"><FONT size=4><MARQUEE STYLE="WIDTH: 428px; HEIGHT: 108px" SCROLLAMOUNT="1" DIRECTION="up" WIDTH="268" HEIGHT="57"><FONT COLOR="#00FFFF"><center><b><p>网址导航说明：<p>下方网址只需轻按键盘即可进入</p>您也可以自定义修改网址。<p>注意：清除cookie自定义修改的设置将消失。</p><p>更多资源请前往5G云的博客</p><p>www.zye.cc</p><p>对了，本页面可以调节四种颜色哦！</p></b></center></FONT></MARQUEE></TD>
+</TR>
+</TBODY>
+</TABLE>
+</CENTER>
+</DIV>
+</DIV>
+
+<ul class="color">
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+</ul>
+
+    <div id="main">
+        <ul>
+            <li id="LI_1">1</li>
+            <li id="LI_2">2</li>
+            <li id="LI_3">3</li>
+            <li id="LI_4">4</li>
+            <li id="LI_5">5</li>
+            <li id="LI_6">6</li>
+            <li id="LI_7">7</li>
+            <li id="LI_8">8</li>
+            <li id="LI_9">9</li>
+            <li id="LI_0">0</li>
+        </ul>
+        <ul>
+            <li id="LI_Q">Q</li>
+            <li id="LI_W">W</li>
+            <li id="LI_E">E</li>
+            <li id="LI_R">R</li>
+            <li id="LI_T">T</li>
+            <li id="LI_Y">Y</li>
+            <li id="LI_U">U</li>
+            <li id="LI_I">I</li>
+            <li id="LI_O">O</li>
+            <li id="LI_P">P</li>
+        </ul>
+        <ul>
+            <li id="LI_A">A</li>
+            <li id="LI_S">S</li>
+            <li id="LI_D">D</li>
+            <li id="LI_F">F</li>
+            <li id="LI_G">G</li>
+            <li id="LI_H">H</li>
+            <li id="LI_J">J</li>
+            <li id="LI_K">K</li>
+            <li id="LI_L">L</li>
+        </ul>
+        <ul>
+            <li id="LI_Z">Z</li>
+            <li id="LI_X">X</li>
+            <li id="LI_C">C</li>
+            <li id="LI_V">V</li>
+            <li id="LI_B">B</li>
+            <li id="LI_N">N</li>
+            <li id="LI_M">M</li>
+        </ul>
+        <div id="message"></div>
+        <input type="hidden" id="tempdate" value="">
+    </div>
+	
+    <script src="js/js_2.js"></script>
+</body>
+</html>
