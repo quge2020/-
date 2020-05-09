@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="js/jquery-3.4.1.min.js"></script>
+		<style>
+			.control-view {
+				display: flex;
+				width: 400px;
+				justify-content: space-around;
+			}
+
+			.btn {
+				width: 100px;
+				height: 50px;
+				background-color: #52ba99;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				border-radius: 10px;
+				box-shadow: 1px 1px 24px 1px rgba(0, 0, 0, 0.1);
+				color: #ffffff;
+				margin: 5px;
+			}
+			input{
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="mycanvas" width="400" height="400"></canvas>
+		<div class="control-view">
+			<div id="upload" class="btn">
+				上传头像
+				<input id="uploadfile" type="file" accept="image/*">
+			</div>
+			<div id="download" class="btn">
+				点击下载
+			</div>
+		</div>
+	</body>
+	<script>
+		var mycanvas = document.getElementById("mycanvas");
+		var ctx = mycanvas.getContext("2d");
+		function draw(url) {
+			var img = new Image();
+			img.src = url;
+			img.onload = () => {
+				ctx.drawImage(img, 0, 0, 400, 400);
+				img.src = "img/1.png";
+				img.onload = () => {
+					ctx.drawImage(img, 0, 0, 400, 400)
+				}
+			}
+		}
+		draw("img/2.jpg");
+	</script>
+	<script>
+		var upload = document.getElementById("upload");
+		var download = document.getElementById("download");
+		var uploadfile = document.getElementById("uploadfile");
+		// 上传按钮被点击
+		upload.addEventListener("click", e => {
+			uploadfile.click();
+		});
+		// 下载按钮被点击--cavans导出图片
+		download.addEventListener("click", e => {
+			mycanvas.toDataURL("image/png");
+			downLoad(mycanvas.toDataURL("image/png"));
+		});
+		// 文件上传
+		uploadfile.addEventListener("change", e => {
+			// 读取文件
+			var reads = new FileReader();
+			reads.readAsDataURL(uploadfile.files[0]);
+			reads.onload = function(e) {
+				draw(this.result);
+			};
+		});
+		// 下载图片
+		function downLoad(url) {
+			var oA = document.createElement("a");
+			oA.download = ''; // 设置下载的文件名，默认是'下载'
+			oA.href = url;
+			document.body.appendChild(oA);
+			oA.click();
+			oA.remove(); // 下载之后把创建的元素删除
+		}
+	</script>
+</html>
