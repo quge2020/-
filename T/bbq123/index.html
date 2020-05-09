@@ -1,0 +1,609 @@
+
+<!doctype html>
+<html lang="zh">
+
+<head>
+  
+    <meta charset="UTF-8">
+      <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+    <title>表白墙</title>
+    <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+    <link rel='stylesheet prefetch' href="css/a767105f511d4b7da54a47aee07f1e57.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+
+    <!--[if IE]>
+		<script src="js/html5shiv.min.js"></script>
+	<![endif]-->
+
+</head>
+
+<body>
+    <div class="KraitWall">
+        <svg class="walls" viewBox="0 0 300 500">
+			    <path id="wallsvg" class="s-path" fill="#fff" d="M0,0 50,0 a0,250 0 1,1 0,500 L0,500" />
+			  </svg>
+        <div class="static">
+          <div class="static__text"><h2>表白墙</h2><br><span>右滑或单击红色<br>即可打开墙墙<p><br>点击头像即可<br>查看表白内容</p></span></div>
+        </div>
+        <script>
+            $('.walls').on('click', function(event) {
+                event.preventDefault();
+                $('.walls-content').addClass('active');
+                var svg = document.getElementById('wallsvg');
+                svg.setAttribute('d', 'M0 0 200 0 a0 250 0 1 1 0 500 L0 500');
+            });
+        </script>
+        <div class="walls-content">
+            <div class="walls-forwall" id="list"></div>
+
+            <div class="operation">
+                <style>
+                    .wall__tag span a:first-child {
+                        display: none;
+                    }
+
+                    .contact:first-child {
+                        margin-top: 1rem;
+                    }
+                </style>
+                <div class="wall__tag"><a href="javascript:;" data-notification-link="cart-overview">我要表白</a></div>
+                <div class="wall__tag contacts"><a href="javascript:;">声明</a></div>
+                <div class="wall__tag">
+                   
+                </div>
+            </div>
+        </div>
+
+        <div class="forwall">
+            <span class="forwall__back"></span>
+            <span class="forwall__status">对象人加载中</span>
+            <div class="forwall__person">
+                <span class="forwall__online active"></span>
+                <span class="forwall__name">表白人加载中</span>
+            </div>
+            <div class="forwall__messages">
+                <div class="forloveBar"></div>
+                <div class="forwallBar"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="notification pos-right pos-top cart-overview" data-notification-link="cart-overview" data-animation="from-right">
+        <div class="cart-overview__title">
+            <h5>告白....</h5>
+        </div>
+        <form action="" method="post">
+
+            <div class="form-group">
+                <input type="text" id="me" placeholder="我的称呼" class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="text" id="you" placeholder="表白的人" class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="text" id="qq" placeholder="请填写您的QQ" class="form-control">
+            </div>
+            <div class="form-group">
+                <textarea id="content" cols="30" rows="10" placeholder="请填写您的表白内容">我真的很喜欢你!</textarea>
+            </div>
+
+
+            <div class="form-group">
+                <input type="button" id="add" class="btn btn-primary form-control" value="表白">
+            </div>
+        </form>
+        <div class="notification-close-cross notification-close"></div>
+    </div>
+
+    <script>
+        var mr = (function($, window, document) {
+            "use strict";
+
+            var mr = {},
+                components = {
+                    documentReady: [],
+                    windowLoad: []
+                };
+
+
+            $(document).ready(documentReady);
+            $(window).load(windowLoad);
+
+            function documentReady(context) {
+
+                context = typeof context == typeof undefined ? $ : context;
+                components.documentReady.forEach(function(component) {
+                    component(context);
+                });
+            }
+
+            function windowLoad(context) {
+
+                context = typeof context == "object" ? $ : context;
+                components.windowLoad.forEach(function(component) {
+                    component(context);
+                });
+            }
+
+            mr.setContext = function(contextSelector) {
+                var context = $;
+                if (typeof contextSelector !== typeof undefined) {
+                    return function(selector) {
+                        return $(contextSelector).find(selector);
+                    };
+                }
+                return context;
+            };
+
+            mr.components = components;
+            mr.documentReady = documentReady;
+            mr.windowLoad = windowLoad;
+
+            return mr;
+        }(jQuery, window, document));
+
+
+
+        //////////////// Notifications
+        mr = (function(mr, $, window, document) {
+            "use strict";
+
+            mr.notifications = {};
+
+            var documentReady = function($) {
+
+                $('.notification').each(function() {
+                    var notification = $(this);
+                    if (!notification.find('.notification-close').length) {
+                        notification.append('<div class="notification-close-cross notification-close"></div>');
+                    }
+                });
+
+
+                $('.notification[data-autoshow]').each(function() {
+                    var notification = $(this);
+                    var millisecondsDelay = notification.attr('data-autoshow') * 1;
+
+                    // If this notification has a cookie attribute, check to see if a cookie is set, and if so, don't show it.
+                    if (typeof notification.attr('data-cookie') !== typeof undefined) {
+                        if (!mr.cookies.hasItem(notification.attr('data-cookie'))) {
+                            mr.notifications.showNotification(notification, millisecondsDelay);
+                        }
+                    } else {
+                        mr.notifications.showNotification(notification, millisecondsDelay);
+                    }
+                });
+
+                $('[data-notification-link]:not(.notification)').on('click', function() {
+                    var notificationID = $(this).attr('data-notification-link');
+                    var notification = $('body').find('.notification[data-notification-link="' + notificationID + '"]');
+                    notification.removeClass('notification--dismissed');
+                    notification.addClass('notification--reveal');
+                    return false;
+                });
+
+                $('.notification-close').on('click', function() {
+                    var closeButton = $(this);
+                    // Pass the closeNotification function a reference to the close button
+                    mr.notifications.closeNotification(closeButton);
+
+                    if (closeButton.attr('href') === '#') {
+                        return false;
+                    }
+                });
+
+            };
+
+            mr.notifications.documentReady = documentReady;
+
+            mr.notifications.showNotification = function(notification, millisecondsDelay) {
+                var delay = (typeof millisecondsDelay !== typeof undefined) ? (1 * millisecondsDelay) : 0;
+
+                setTimeout(function() {
+                    notification.addClass('notification--reveal');
+                }, delay);
+            };
+
+            mr.notifications.closeNotification = function(notification) {
+
+                var $notification = $(notification);
+
+                notification = $notification.is('.notification-close') ?
+                    $notification.closest('.notification') :
+                    $('body').find('.notification[data-notification-link="' + notification + '"]');
+
+                notification.addClass('notification--dismissed');
+
+                // If this notification requires to be closed permanently using a cookie, set the cookie now.
+                if (typeof notification.attr('data-cookie') !== typeof undefined) {
+                    mr.cookies.setItem(notification.attr('data-cookie'), "true", Infinity);
+                }
+            };
+
+            mr.components.documentReady.push(documentReady);
+            return mr;
+
+        }(mr, jQuery, window, document));
+    </script>
+
+
+    <script src='js/stopexecutionontimeout.js'></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+			init();
+		
+            var $svg = $(".walls"),
+                $KraitWall = $(".KraitWall"),
+                $path = $(".s-path"),
+                $sCont = $(".walls-content"),
+                $forwall = $(".forwall"),
+                KraitWallTop = $KraitWall.offset().top,
+                KraitWallLeft = $KraitWall.offset().left,
+                diffX = 0,
+                curX = 0,
+                finalX = 0,
+                frame = 1000 / 60,
+                animTime = 10,
+                sContTrans = 200,
+                animating = false;
+
+            var easings = {
+                smallElastic: function(t, b, c, d) {
+                    var ts = (t /= d) * t;
+                    var tc = ts * t;
+                    return b + c * (33 * tc * ts + -106 * ts * ts + 126 * tc + -67 * ts + 15 * t);
+                },
+                inCubic: function(t, b, c, d) {
+                    var tc = (t /= d) * t * t;
+                    return b + c * (tc);
+                }
+            };
+
+            function createD(top, ax, dir) {
+                return "M0,0 " + top + ",0 a" + ax + ",250 0 1," + dir + " 0,500 L0,500";
+            }
+
+            var startD = createD(50, 0, 1),
+                midD = createD(125, 75, 0),
+                finalD = createD(200, 0, 1),
+                clickMidD = createD(300, 80, 0),
+                clickMidDRev = createD(200, 100, 1),
+                clickD = createD(300, 0, 1),
+                currentPath = startD;
+
+            function newD(num1, num2) {
+                var d = $path.attr("d"),
+                    num2 = num2 || 250,
+                    nd = d.replace(/\ba(\d+),(\d+)\b/gi, "a" + num1 + "," + num2);
+                return nd;
+            }
+
+            function animatePathD(path, d, time, handlers, callback, easingTop, easingX) {
+                var steps = Math.floor(time / frame),
+                    curStep = 0,
+                    oldArr = currentPath.split(" "),
+                    newArr = d.split(" "),
+                    oldLen = oldArr.length,
+                    newLen = newArr.length,
+                    oldTop = +oldArr[1].split(",")[0],
+                    topDiff = +newArr[1].split(",")[0] - oldTop,
+                    nextTop,
+                    nextX,
+                    easingTop = easings[easingTop] || easings.smallElastic,
+                    easingX = easings[easingX] || easingTop;
+
+                $(document).off("mousedown mouseup");
+
+                function animate() {
+                    curStep++;
+                    nextTop = easingTop(curStep, oldTop, topDiff, steps);
+                    nextX = easingX(curStep, curX, finalX - curX, steps);
+                    oldArr[1] = nextTop + ",0";
+                    oldArr[2] = "a" + Math.abs(nextX) + ",250";
+                    oldArr[4] = (nextX >= 0) ? "1,1" : "1,0";
+                    $path.attr("d", oldArr.join(" "));
+                    if (curStep > steps) {
+                        curX = 0;
+                        diffX = 0;
+                        $path.attr("d", d);
+                        currentPath = d;
+                        if (handlers) handlers1();
+                        if (callback) callback();
+                        return;
+                    }
+                    requestAnimationFrame(animate);
+                }
+                animate();
+            }
+
+            function handlers1() {
+
+                $(document).on("mousedown touchstart", ".s-path", function(e) {
+                    var startX = e.pageX || e.originalEvent.touches[0].pageX;
+
+                    $(document).on("mousemove touchmove", function(e) {
+                        var x = e.pageX || e.originalEvent.touches[0].pageX;
+                        diffX = x - startX;
+                        if (diffX < 0) diffX = 0;
+                        if (diffX > 300) diffX = 300;
+                        curX = Math.floor(diffX / 2);
+                        $path.attr("d", newD(curX));
+                    });
+                });
+
+                $(document).on("mouseup touchend", function() {
+                    $(document).off("mousemove touchmove");
+                    if (animating) return;
+                    if (!diffX) return;
+                    if (diffX < 40) {
+                        animatePathD($path, newD(0), animTime, true);
+                    } else {
+                        animatePathD($path, finalD, animTime, false, function() {
+                            $sCont.addClass("active");
+                            setTimeout(function() {
+                                $(document).on("click", closewalls);
+                            }, sContTrans);
+                        });
+                    }
+                });
+
+            }
+
+            handlers1();
+
+            function closewalls(e) {
+                if ($(e.target).closest(".walls-content").length ||
+                    $(e.target).closest(".forwall").length) return;
+                if (animating) return;
+                animating = true;
+                $sCont.removeClass("active");
+                $forwall.removeClass("active");
+                $(".cloned").addClass("removed");
+                finalX = -75;
+                setTimeout(function() {
+                    animatePathD($path, midD, animTime / 3, false, function() {
+                        $forwall.hide();
+                        $(".cloned").remove();
+                        finalX = 0;
+                        curX = -75;
+                        animatePathD($path, startD, animTime / 3 * 2, true);
+                        animating = false;
+                    }, "inCubic");
+                }, sContTrans);
+                $(document).off("click", closewalls);
+            }
+
+            function moveImage(that) {
+                var $img = $(that).find(".contact__photo"),
+                    top = $img.offset().top - KraitWallTop,
+                    left = $img.offset().left - KraitWallLeft,
+                    $clone = $img.clone().addClass("cloned");
+
+                $clone.css({
+                    top: top,
+                    left: left
+                });
+                $KraitWall.append($clone);
+                $clone.css("top");
+                $clone.css({
+                    top: "1.8rem",
+                    left: "25rem"
+                });
+            }
+
+            function ripple(elem, e) {
+                var elTop = elem.offset().top,
+                    elLeft = elem.offset().left,
+                    x = e.pageX - elLeft,
+                    y = e.pageY - elTop;
+                var $ripple = $("<div class='ripple'></div>");
+                $ripple.css({
+                    top: y,
+                    left: x
+                });
+                elem.append($ripple);
+            }
+
+
+            function moblwall(mobl, text) {
+                var mobl = '<div class="forwall__msgRow"><div class="forwall__message ' + mobl + '">' + text + '</div></div>';
+                return mobl;
+
+            }
+			
+			function init() {
+				var datalist = "api.php?act=list";
+				 $.getJSON(datalist, function(data) {
+                    if(data.status == 0) {
+						var html = '';
+						for(var i = 0; i < data.data.length; i++) {
+							html += '<div class="contact">';
+							html += '<img src="https://q2.qlogo.cn/headimg_dl?dst_uin=' + data.data[i].qq + '&spec=100" alt="" class="contact__photo" />';
+							html += '<span class="contact__name" data-id="' + data.data[i].id + '">' + data.data[i].me + ' @' + data.data[i].you + '</span>';
+							html += '<span class="contact__status online"></span>';
+							html += '</div>';
+						}
+						$("#list").html(html);
+					}
+                });
+			}
+			
+			$(document).on("click", "#add", function(e) {
+				var content = $("#content").val();
+				var qq = $("#qq").val();
+				var me = $("#me").val();
+				var you = $("#you").val();
+				if(me == "") {
+					alert("我的称呼不能为空")
+					return;
+				}
+				if(you == "") {
+					alert("表白的人不能为空")
+					return;
+				}
+				if(qq == "") {
+					alert("您的QQ不能为空")
+					return;
+				}
+				if(content == "") {
+					alert("您的表白内容不能为空")
+					return;
+				}
+				var dataadd = "api.php?act=add&content=" + content + "&me=" + me + "&you=" + you + "&qq=" + qq;
+				$.getJSON(dataadd, function(data) {
+					if(data.status == 0) {
+						alert("表白成功");
+						location.reload();
+					} else {
+						alert("表白失败");
+					}
+				})
+			});
+
+            $(document).on("click", ".contact", function(e) {
+                if (animating) return;
+                animating = true;
+                $(document).off("click", closewalls);
+                var that = this,
+                    name = $(this).find(".contact__name").text(),
+                    ids = $(this).find(".contact__name").data('id'),
+                    online = $(this).find(".contact__status").hasClass("online");
+
+                var databyid = "api.php?act=search&id=" + ids;
+
+                $.getJSON(databyid, function(data) {
+					if(data.status == 0) {
+						var datas = data.data,
+							content = datas["content"],
+							qq = datas["qq"],
+							me = datas["me"],
+							you = datas["you"];
+							addtime = datas["addtime"];
+			
+
+						$(".forwall__name").text(me);
+						$(".forwall__status").text('对@' + you);
+
+						var forlovebar = '';
+						var forwallbar = '';
+
+
+						forlovebar += moblwall('mine', '@' + you);
+
+						forlovebar += moblwall('mine', content);
+						
+						forwallbar += moblwall('notMine', '来自:' + me);
+						forwallbar += moblwall('notMine', '时间:' + addtime);
+
+						
+						$(".forloveBar").html(forlovebar);
+						$(".forwallBar").html(forwallbar);
+					}
+
+                });
+                $(".forwall__online").removeClass("active");
+                if (online) $(".forwall__online").addClass("active");
+                ripple($(that), e);
+                setTimeout(function() {
+                    $sCont.removeClass("active");
+                    moveImage(that);
+                    finalX = -80;
+                    setTimeout(function() {
+                        $(".ripple").remove();
+                        animatePathD($path, clickMidD, animTime / 3, false, function() {
+                            curX = -80;
+                            finalX = 0;
+                            animatePathD($path, clickD, animTime * 2 / 3, true, function() {
+                                $forwall.show();
+                                $forwall.css("top");
+                                $forwall.addClass("active");
+                                animating = false;
+                            });
+                        }, "inCubic");
+                    }, sContTrans);
+                }, sContTrans);
+            });
+
+
+            $(document).on("click", ".contacts", function(e) {
+                
+                $(".forwall__name").text("一泽");
+                $(".forwall__status").text("程序猿");
+                var forlovebar = '';
+                var forwallbar = '';
+
+                forwallbar += moblwall('mine', '官网：www.zye.cc');
+                forwallbar += moblwall('mine', '备用域名为: 暂无');
+                
+                forwallbar += moblwall('notMine', '主要为个人建立的表白墙丨为避免有人恶意利用表白墙获取告白者的信息,已将表白内容的邮箱信息隐藏,仅供管理员查看');
+                forwallbar += moblwall('notMine', '以免部分人恶意评论学校或者国家领导人,已将敏感词屏蔽丨告白者以及被告白者的名字已强制要使用中文,邮箱暂时使用QQ邮箱。');
+                forwallbar += moblwall('notMine', '表白时间间隔提升至500秒,若本站内容违反了相关法律归档,请及时联系邮箱,我们便进行相关删除。');
+                
+                
+
+                $(".forloveBar").html(forlovebar);
+                $(".forwallBar").html(forwallbar);
+
+                var svg = document.getElementById('wallsvg');
+                svg.setAttribute('d', 'M0 0 300 0 a0 250 0 1 1 0 500 L0 500');
+
+                $(".walls-content").removeClass("active");
+                $(".forwall").addClass("active");
+                $forwall.show();
+                if (online) $(".forwall__online").addClass("active");
+                ripple($(that), e);
+                setTimeout(function() {
+                    $sCont.removeClass("active");
+                    moveImage(that);
+                    finalX = -80;
+                    setTimeout(function() {
+                        $(".ripple").remove();
+                        animatePathD($path, clickMidD, animTime / 3, false, function() {
+                            curX = -80;
+                            finalX = 0;
+                            animatePathD($path, clickD, animTime * 2 / 3, true, function() {
+                                $forwall.show();
+                                $forwall.css("top");
+                                $forwall.addClass("active");
+                                animating = false;
+                            });
+                        }, "inCubic");
+                    }, sContTrans);
+                }, sContTrans);
+            });
+
+            $(document).on("click", ".forwall__back", function() {
+                if (animating) return;
+                animating = true;
+                $forwall.removeClass("active");
+                $(".cloned").addClass("removed");
+                setTimeout(function() {
+                    $(".cloned").remove();
+                    $forwall.hide();
+                    finalX = 100;
+                    animatePathD($path, clickMidDRev, animTime / 3, false, function() {
+                        curX = 100;
+                        finalX = 0;
+                        animatePathD($path, finalD, animTime * 2 / 3, true, function() {
+                            $sCont.addClass("active");
+                            $(document).on("click", closewalls);
+                            animating = false;
+                        });
+                    }, "inCubic");
+                }, sContTrans);
+            });
+
+            $(window).on("resize", function() {
+                KraitWallTop = $KraitWall.offset().top;
+                KraitWallLeft = $KraitWall.offset().left;
+            });
+
+        });
+    </script>
+</body>
+
+</html>
