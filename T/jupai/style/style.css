@@ -1,0 +1,209 @@
+			* {
+				margin: 0px;
+				padding: 0px;
+			}
+			a{
+				text-decoration: none;
+			}
+			body{
+				max-width: 480px;
+				margin: 0px auto;
+			}
+			#bBox {
+				max-width: 480px;
+				height: 180px;
+				overflow: hidden;
+				margin: 0px auto;
+				/*避免动画反应出现问题占用页面*/
+				position: relative;
+				cursor: pointer;
+			}
+			
+			#bBox .slider {
+				max-width: 480px;
+				height: 180px;
+			}
+			
+			#bBox .slider div {
+				width: 100%;
+				height: 100%;
+				display: none;
+			}
+			
+			#bBox .slider img {
+				width: 100%;
+				height: 100%;
+				display: block;
+			}
+			
+			#bBox .slider .show,
+			#bBox .bTitle p.show {
+				display: block;
+			}
+			#bBox a{
+				color: #fff;
+			}
+			#bBox .bNav {
+				line-height: 20px;
+				text-align: center;
+				position: absolute;
+				right: 5px;
+				bottom: 5px;
+				color: #fff;
+			}
+			
+			#bBox .bNav span {
+				background: #fff;
+				color: orangered;
+				font-family: "微软雅黑";
+				font-size: 9pt;
+				width: 20px;
+				height: 20px;
+				display: inline-block;
+				border-radius: 50%;
+			}
+			
+			#bBox .bNav span.on {
+				background: orangered;
+				color: #fff;
+			}
+			
+			#bBox .bTitle {
+				width: 100%;
+				color: #fff;
+				text-indent: 5px;
+				line-height: 30px;
+				background: rgba(0, 0, 0, 0.5);
+				position: absolute;
+				left: 0px;
+				bottom: 0px;
+			}
+			
+			#bBox .bTitle p {
+				display: none;
+			}
+			.clear{
+				clear: both;
+			}
+			#photo {
+				max-width: 480px;
+				line-height: 30px;
+				margin: 0px auto;
+			}
+			
+			#photo ul li {
+				float: left;
+				list-style-type: none;
+				width: 48%;
+				height: 290px;
+				margin: 2px;
+				position: relative;
+				padding: 0px;
+			}
+			
+			#photo ul li p {
+				width: 100%;
+				position: absolute;
+				bottom: 0px;
+				left: 0px;
+				right: 0px;
+				background: rgba(0, 0, 0, 0.5);
+				color: #fff;
+				text-align: center;
+				line-height: 26px;
+				font-family: "微软雅黑";
+			}
+			#photo ul li p a{
+				color: #fff;
+			}
+			#photo ul li img {
+				height: 100%;
+				width: 100%;
+			}
+			
+			.page table{
+				width: 100%;
+				height: 35px;
+				margin: 10px auto;
+				border-radius: 3px;
+				line-height: 35px;
+				background: #fff;
+			}
+			.page table td{
+				text-align: center;
+				font-family: "微软雅黑";
+				width: 33%;
+			}
+			.page table td a{
+				color: #005999;
+			}
+			.page table td a:hover{
+				color: #545;
+			}
+			
+			#imgs {
+				width: 100%;
+				margin: 0px auto;
+				height: 80%;
+				position: relative;
+			}
+			
+			#imgs img {
+				width: 100%;
+				height: 100%;
+			}
+			p{
+				line-height: 30px;
+				font-family: "微软雅黑";
+				font-size: 10pt;
+			}
+			input{
+				line-height: 25px;
+				padding: 2px;
+				width: 100%;
+				color: #545;
+			}
+			input[type=submit]{
+				text-align: center;
+				border: none;
+				line-height: 35px;
+				background: #4CB274;
+				color: #fff;
+				font-family: "微软雅黑";
+				width: 120px;
+				width: 100%;
+				margin: 5px auto;
+				border-radius: 3px;
+				letter-spacing: 1mm;
+			}
+			.p-title{
+				position: absolute;
+				bottom: 0px;
+				left: 0px;
+				right: 0px;
+				line-height: 40px;
+				background: rgba(33, 178, 90,0.6);
+				color: #fff;
+				text-align: center;
+				font-family: "微软雅黑";
+				font-size: 13pt;
+				letter-spacing: 1mm;
+			}
+			.p-title span{
+				font-size: 9pt;
+			}
+			#down{
+				display: none;
+			}
+			#down a{
+				text-align: center;
+				font-family: "微软雅黑";
+				font-size: 12pt;
+				background: #4CB274;
+				border-radius: 3px;
+				margin: 5px auto;
+				width: 90px;
+				display: inline-block;
+				color: #fff;
+				line-height: 35px;
+			}
