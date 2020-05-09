@@ -1,0 +1,29 @@
+.ql-sear { padding:0 60px}
+
+.ql-sear form span { display:block; padding-top:10px; height:30px;}
+.ql-sear form .int{ padding-left:5px;width:100%; height:58px;line-height:58px;font-size:20px;border:solid 1px #ddd}
+.ql-sear form .btn{ width:140px; height:60px;_height:58px;font-size:20px; cursor:pointer; color:#fff; border:none; background:#3ae078}
+.ql-sear form .fr{position:relative;margin-left:-140px;*margin-top:1px;width:140px}
+.ql-sear form .fl{width:100%}
+.ql-sear form .fl div{margin-right:140px}
+
+.ql-con { padding:0 60px 40px; text-align:left;}
+.ql-con h3 { padding-top:10px;}
+.ql-con p { padding-top:10px; color:#666;}
+@media screen and (max-width:719px){	
+	.ql-sear {padding:0 20px;}
+	.ql-con { padding:0 20px 20px;}
+}
+@media screen and (max-width:479px){
+	.ql-result li { float:none; width:100%}
+	.ql-sear form .btn{height:50px;font-size:18px;}
+	.ql-sear form .int{height:48px;line-height:48px;font-size:16px}	
+}
+@media screen and (max-width:359px){
+	.ql-sear { padding:0 10px}
+	.ql-sear form .btn{width:110px;height:40px;font-size:16px;}
+	.ql-sear form .int{height:38px;line-height:38px;}
+	.ql-sear form .fr{margin-left:-110px;width:110px}
+	.ql-sear form .fl div{margin-right:110px}
+	.ql-con { padding:0 10px 10px;}
+}

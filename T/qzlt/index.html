@@ -1,0 +1,206 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Cache-Control" content="no-transform" />
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<meta name="mobile-agent" content="format=html5;url=http://www.12580sky.com"/>
+	<link rel="alternate" media="only screen and (max-width: 640px)" href="http://24cm.cn/" >
+	<meta name="csrf-param" content="_csrf">
+    <meta name="csrf-token" content="LTNzeDNpcXh4dV5BdV8rOXpeADkBNicvSWwZPl8gORlsAUIaVztDDQ==">
+	<title>QQ强行聊天器_QQ强制聊天工具_QQ临时会话工具</title>
+	<link rel="shortcut icon" href="http://www.12580sky.com/favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="skin/css/style.css?20171102" />
+	<link rel="stylesheet" type="text/css" href="skin/css/weather.css" />
+	<meta name="keywords" content="QQ强行聊天器,QQ强制聊天工具,QQ临时会话工具">
+<meta name="description" content="随便吧为您提供QQ强行聊天器,QQ强制聊天工具,QQ临时会话工具在线使用,一个简单的QQ强制聊天程序，当你在QQ上添加好友遭到拒绝时，使用该程序可以自由地同任何在线的QQ用户聊天。是交友必不可少的一个工具！">
+<link href="skin/css/qqliao.css" rel="stylesheet">
+<script src="skin/js/jquery.js"></script></head>
+<body>
+<!--www.24cm.cn-->
+<!--www.24cm.cn-->
+			<div class="menu"></div>
+			<div class="form">
+
+			</div>
+		</div>
+		<div class="nav">
+			<div class="clearfix">
+				</ul>
+			</div>
+		</div>
+	</div>
+<!--www.24cm.cn-->
+<!--www.24cm.cn-->
+<!--www.24cm.cn-->		
+<div class="main">
+  <div class="pt10">
+    <script type="text/javascript" src="skin/js/xedyfoybjt.js"></script>  </div>
+  <div class="box02">
+    <div class="hd">
+      <h1 class="h1List"><img src="skin/images/qqliao.png"/>QQ强制对话工具</h1>
+      <p>请在下方输入框输入任意QQ号码,点击QQ强制对话按钮</p>    </div>
+  </div>
+  <div class="ql">
+    <div class="ql-sear">
+      <FORM id="frm " name=frm>
+        <div class="clearfix">
+          <div class="fl">
+            <div>
+              <INPUT id=QQNum maxLength=10 size=18 class="int"/>
+            </div>
+          </div>
+          <div class="fr">
+            <div><INPUT id=sub2 onclick=StartQQMSG() value=QQ强制对话 align=absMiddle type=button class="btn"/></div>
+          </div>
+        </div>
+        <span id=QHTML></span>
+      </FORM>
+    </div>
+    <div class="pb10">
+    <script type="text/javascript" src="skin/js/bidxdgp68l.js"></script>    </div>
+    <div class="ql-con">
+      <h3>QQ强制对话注意事项:</h3>
+      <p>1、如果弹出“必须加好友才能对话”可能是别人开启了防骚扰设置，如开启了此项设置则对话不会成功</p>
+      <p>2、如果对方QQ版本过低，则可能提示“对方QQ版本过低不支持此功能” 请按Ctrl+D键 收藏本站 如果您喜欢本站,请将本网站推荐给您身边有需要的朋友。 </p>
+    </div>    
+  </div>
+</div>
+<SCRIPT type=text/javascript>
+    function StartQQMSG(){
+        var QNUM=document.getElementById('QQNum').value;
+        if(QNUM==""){
+            alert("请输入QQ号码");
+            document.getElementById('QQNum').focus();
+        }else{
+            document.getElementById('QHTML').innerHTML='<a target="blank" href="tencent://message/?uin='+QNUM+'&Site=Senlon.Net&Menu=yes"><img border="0" src=http://wpa.qq.com/pa?p=4:'+QNUM+':4 alt="点击这里给我发消息" height=16 align="absmiddle" /> 点击此处开始和他(她)对话</a>';
+        }
+        return false;
+    }
+</SCRIPT>		<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script></div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--www.24cm.cn-->
+<script type="text/javascript" src="skin/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="skin/js/script.js"></script>
+<!--www.24cm.cn-->
+<script type="text/javascript">
+	var city = $.cookie('city');
+	if (city) {
+		weather(city);
+	}else{
+		$.ajax({type: "get",url: "/api/city",dataType: "jsonp",jsonp: "callback",jsonpCallback:"flightHandler",
+		success: function(re) {
+			if (re != ''&&re != null) {
+				$.cookie('city', re, {
+					path: '/',
+					domain: '.388g.com',
+					expires: 600
+				});
+				weather(re);
+			}
+		}
+		});
+	}
+<!--www.24cm.cn-->
+	function weather (id){
+		$.ajax({type: "get",url: "/api/weather",data: {id:id},dataType: "jsonp",jsonp: "callback",jsonpCallback:"flightHandler",
+		success: function(re) {
+			if (re != ''&&re != null) {
+				var symbolMap = {
+				};
+				var str="<span id=\"city\"><span class=\"cn\">"+re.n+"</span></span>";
+				str+="<span id=\"fc-s1\" class=\"metro\"><i class=\"symbol-mini symbol-mini-"+symbolMap[re.d1.s]+"\" title=\""+re.d1.s+"\"></i></span>";
+				str+="<span id=\"fc-temp\"><span id=\"fc-l1\">"+re.d1.l+"℃</span><em> ~ </em><span id=\"fc-h1\">"+re.d1.h+"℃ </span></span>";
+				str+="<span id=\"fc-w1\">"+re.d1.w+"</span> ";
+				$("#weather").html(str);
+			}
+		}
+		});
+	}
+</script>
+<!--www.24cm.cn-->
+<div class="couplet left">
+<!--www.24cm.cn-->
+</div>
+<style type="text/css">
+	.couplet {position: fixed; z-index:9; top:150px;overflow: visible;width:100px;}
+	.couplet.left { left: 15px;}
+	.couplet.right { right: 15px;}
+	.couplet .btn {position:absolute;top:100%;left:0; width:100px;height:20px;line-height:20px;text-align: center;font-size:12px; cursor:pointer;color:#fff;background:#999999;padding: 0;margin: 0;border: none;border-radius: 0;}
+	.couplet .btn:hover { background-color:#a9a9a9}
+</style><div class="couplet right">
+<!--www.24cm.cn-->
+</div>
+<!--www.24cm.cn-->
+</div>
+<style type="text/css">
+.zone5{position: fixed; z-index:9; right: 15px; bottom: 15px;overflow: visible;width:250px;}
+.zone5 .btn {position:absolute;top:-22px;right:0; width:40px;height:20px;line-height:20px;text-align: center;font-size:12px; cursor:pointer;color:#fff;background:#999999;padding: 0;margin: 0;border: none;border-radius: 0;}
+.zone5 .btn:hover { background-color:#a9a9a9}
+</style>		<script type="text/javascript">
+    /*黎九博客 创建于 2017/12/20*/
+	<!--www.24cm.cn-->
+    var cpro_id = "u2990880";
+</script>
+<script type="text/javascript" src="skin/js/i.js"></script><script>
+/*PC-总*/
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?1c93b08a236fd3a29a5bc35d9eea56ca";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>
+/*PC-工*/
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?1f0b1dc06c2219625cc60d3abd85f23f";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<script src="skin/js/yii.js"></script></body>
+<!--=========END右侧==========-->
+</div>
+<!--主题框架结束-->
+<!-- 引入底部 -->
+<!--www.12580sky.com-->
+<footer>
+	<div class="foot-nav">
+		<div class="copy-right"><span >
+			Copyright © 2019  
+            Powered by<a href="http://tool.zye.cc" target="_blank">工具箱</a>
+		</span>
+
+		</div>
+	</div>
+</footer>
+</div>
+<div id="pjax-loading">
+<div class="spinner">
+    <div class="bounce1"></div>
+    <div class="bounce2"></div>
+    <div class="bounce3"></div>
+</div>
+</div>
+</body>
+</html>
