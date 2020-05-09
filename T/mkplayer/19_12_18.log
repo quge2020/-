@@ -1,0 +1,10 @@
+[ 2019-12-18T14:49:41+08:00 ] 123.151.144.161 /favicon.ico
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000283s ]
+
+[ 2019-12-18T17:24:18+08:00 ] 58.251.121.18 /favicon.ico
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000227s ]
+

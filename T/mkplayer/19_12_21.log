@@ -1,0 +1,10 @@
+[ 2019-12-21T16:28:23+08:00 ] 218.68.91.198 /favicon.ico
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000250s ]
+
+[ 2019-12-21T23:47:12+08:00 ] 101.227.163.45 /T/heikedaoh/favicon.ico
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000219s ]
+
